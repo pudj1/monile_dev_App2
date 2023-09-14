@@ -1,20 +1,47 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import {StyleSheet, Text, SafeAreaView, StatusBar, Alert, TouchableHighlight, View} from "react-native";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+  const HandlePressWithSimpleAlert = () => Alert.alert("Simple Alert Box");
+  const HandlePressWithAdvancedAlert = () => Alert.alert(
+      'Advanced alert',
+      'My first advanced alert',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => HandlePressWithSimpleAlert(),
+        },
+        {text: 'OK', onPress: () => HandlePressWithSimpleAlert()},
+      ],
   );
+  return (
+      <View>
+        <Text onPress={HandlePressWithSimpleAlert} style = {styles.text}>
+          text with simple alert
+        </Text>
+
+        <TouchableHighlight  activeOpacity={0.6}  underlayColor="#DDDDDD"  onPress={HandlePressWithSimpleAlert}>
+            <Text style = {styles.text}>
+              text with effect
+            </Text>
+        </TouchableHighlight >
+
+        <TouchableHighlight  activeOpacity={0.6}  underlayColor="#DDDDDD"  onPress={HandlePressWithAdvancedAlert}>
+          <Text style = {styles.text}>
+            text with advanced alert
+          </Text>
+        </TouchableHighlight >
+      </View>
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  text: {
+    color: 'red',
+    fontSize: 32,
   },
 });

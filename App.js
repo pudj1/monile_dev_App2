@@ -1,36 +1,46 @@
 import React from "react";
-import {StyleSheet, Text, SafeAreaView, StatusBar, Alert, TouchableHighlight, View} from "react-native";
+import {
+    StyleSheet,
+    Text,
+    SafeAreaView,
+    StatusBar,
+    Alert,
+    TouchableHighlight,
+    View,
+    TextInput,
+    Button, FlatList
+} from "react-native";
 
 export default function App() {
-  const HandlePressWithSimpleAlert = () => Alert.alert("Simple Alert Box");
-  const HandlePressWithAdvancedAlert = () => Alert.alert(
-      'Advanced alert',
-      'My first advanced alert',
-      [
-        {
-          text: 'Cancel',
-          onPress: () => HandlePressWithSimpleAlert(),
-        },
-        {text: 'OK', onPress: () => HandlePressWithSimpleAlert()},
-      ],
-  );
-  return (
-      <View>
-        <Text onPress={HandlePressWithSimpleAlert} style = {styles.text}>
-          text with simple alert
-        </Text>
+const [data, setData] = React.useState([{key: "прокинутися"}]);
+    const renderSeparator = () => {
+        return (
+            <View
+                style={{
+                    height: 1,
+                    width: "100%",
+                    backgroundColor: "#000",
+                }}
+            />
+        );
+    };
 
-        <TouchableHighlight  activeOpacity={0.6}  underlayColor="#DDDDDD"  onPress={HandlePressWithSimpleAlert}>
-            <Text style = {styles.text}>
-              text with effect
-            </Text>
-        </TouchableHighlight >
+    return (
+      <View style={styles.container}>
+          <Text>Введіть дію для розпорядку дня</Text>
+        <TextInput />
+          <FlatList
+              data={data}
+              renderItem={({item}) =>
+                  <View style={styles.note}>
+                      <Text style={styles.item}>
+                      </Text>
+                      <Button title={"X"}/>
+                  </View>
+              }
+              ItemSeparatorComponent={renderSeparator}
+          />
 
-        <TouchableHighlight  activeOpacity={0.6}  underlayColor="#DDDDDD"  onPress={HandlePressWithAdvancedAlert}>
-          <Text style = {styles.text}>
-            text with advanced alert
-          </Text>
-        </TouchableHighlight >
       </View>
   )
 }
@@ -39,7 +49,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+
   },
+    note:{
+    },
   text: {
     color: 'red',
     fontSize: 32,

@@ -2,49 +2,91 @@ import React, { Component } from 'react';
 import {StyleSheet, AppRegistry,Text, View,Animated,Easing} from 'react-native';
 
 export default class App extends Component {
-    constructor () {
+    constructor() {
         super()
-        this.spinValue = new Animated.Value(0) //оголосити spinValue як новий Animated.Value і передати в ньому 0 (нуль)
+        this.animatedValue = new Animated.Value(0)
     }
 
-    componentDidMount () {
-        this.spin()
-    }
-
-    //створити метод spin і викликати його з componentDidMount
-    spin() {
-        this.spinValue.setValue(0) // встановити spinValue рівним 0
-        Animated.timing(    // Виклик методу Animated.timing() отримує два аргументи:
-            this.spinValue, // значення
-            {           // і об'єкт конфігурації
-                toValue: 1, // і встановивши spinValue рівним 1
-                duration: 4000, // протягом 4000 мілісекунд
-                easing: Easing.linear
+    componentDidMount() {
+        this.animate()
+    } //метод animate викликається з componentDidMount
+    animate() {
+        this.animatedValue.setValue(0)
+        Animated.timing(
+            this.animatedValue,
+            {
+                toValue: 1,
+                duration: 2000,
+                easing: Easing.linear,
+                useNativeDriver: false
             }
-        ).start(() => this.spin())
+        ).start(() => this.animate())
     }
+
     render() {
-        const spin = this.spinValue.interpolate({
-            inputRange: [0, 1],
-            outputRange: ['0deg', '360deg']
+        const fromTopToMid = this.animatedValue.interpolate({
+            inputRange: [0, 0.5, 1],
+            outputRange: [0, 300, 0]
         })
+        const fromBottomToMid = this.animatedValue.interpolate({
+            inputRange: [0, 0.5, 1],
+            outputRange: [18, 32, 18]
+        })
+
+
+
         return (
             <View style={styles.container}>
-                <Animated.Image
+                <Animated.Text // returns Animated.Text
                     style={{
-                        width: 227,
-                        height: 200,
-                        transform: [{rotate: spin}] }}
-                    source={require('./react_logo.png')}
-                />
+                        fontSize: fromBottomToMid,
+                        marginTop: 10,
+                        color: 'green'}} >
+                    H
+                </Animated.Text>
+                <Animated.Text // returns Animated.Text
+                    style={{
+                        fontSize: fromBottomToMid,
+                        marginTop: 10,
+                        color: 'green'}} >
+                    E
+                </Animated.Text>
+                <Animated.Text // returns Animated.Text
+                    style={{
+                        fontSize: fromBottomToMid,
+                        marginTop: 10,
+                        color: 'green'}} >
+                    L
+                </Animated.Text>
+                <Animated.Text // returns Animated.Text
+                    style={{
+                        fontSize: fromBottomToMid,
+                        marginTop: 10,
+                        color: 'green'}} >
+                    L
+                </Animated.Text>
+                <Animated.Text // returns Animated.Text
+                    style={{
+                        fontSize: fromBottomToMid,
+                        marginTop: 10,
+                        color: 'green'}} >
+                    O
+                </Animated.Text>
+                <Animated.Text // returns Animated.Text
+                    style={{
+                        fontSize: fromBottomToMid,
+                        marginTop: 10,
+                        color: 'green'}} >
+                    !
+                </Animated.Text>
             </View>
         )
     }
 }
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        verticalAlign:"center",
     }
 })

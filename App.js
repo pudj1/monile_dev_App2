@@ -30,7 +30,7 @@ export default class App extends Component {
         })
         const fromBottomToMid = this.animatedValue.interpolate({
             inputRange: [0, 1],
-            outputRange: [0, -300]
+            outputRange: [-300, 0]
         })
 
 

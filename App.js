@@ -172,6 +172,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         height: Dimensions.get('window').height,
+        backgroundColor: 'white', 
     },
     container3: {
         flex: 1,
@@ -185,9 +186,9 @@ const styles = StyleSheet.create({
     },
     card: {
         flex: 1,
-        marginVertical: 4,
-        marginHorizontal: 16,
-        borderRadius: 5,
+        marginVertical: 10,
+        marginHorizontal: 20,
+        borderRadius: 10,
         overflow: 'hidden',
         alignItems: 'center',
         justifyContent: 'center',
@@ -199,16 +200,16 @@ const styles = StyleSheet.create({
         borderRadius: 5,
     },
     infoText: {
-        color: 'white',
+        color: 'red',
         fontSize: 16,
         fontWeight: 'bold',
     },
     normalDot: {
-        height: 8,
-        width: 8,
-        borderRadius: 4,
-        backgroundColor: 'silver',
-        marginHorizontal: 4,
+        height: 10,
+        width: 10,
+        borderRadius: 5,
+        backgroundColor: 'blue',
+        marginHorizontal: 8,
     },
     indicatorContainer: {
         flexDirection: 'row',

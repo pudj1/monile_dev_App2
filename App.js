@@ -41,12 +41,25 @@ function HomeScreen({ navigation }) {
 
 function ContactBook({ navigation }) {
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Contact Book Screen</Text>
-            <Button
-                title="Go back"
-                onPress={() => navigation.goBack()}
-            />
+        <View style={styles.container}>
+            <View style={styles.header}>
+                <Text style={styles.headerText}>Contacts</Text>
+            </View>
+            <ScrollView style={styles.list}>
+                <View style={styles.listItem}>
+                    <Text style={styles.name}>Amy Laudrie</Text>
+                    <Text style={styles.email}>amylaudrie@gmail.com</Text>
+                </View>
+                <View style={styles.listItem}>
+                    <Text style={styles.name}>April Meiny</Text>
+                    <Text style={styles.email}>aprilmeiny@mail.com</Text>
+                </View>
+                <View style={styles.listItem}>
+                    <Text style={styles.name}>Benny Iridos</Text>
+                    <Text style={styles.email}>benyiridos@mail.com</Text>
+                </View>
+                {/* Add more list items here */}
+            </ScrollView>
         </View>
     );
 }
@@ -137,10 +150,6 @@ function App() {
     );
 }
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        fontSize: 20,
-    },
     container2: {
         flex: 1,
         fontSize: 20,
@@ -191,6 +200,52 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    container: {
+        flex: 1,
+    },
+    header: {
+        backgroundColor: '#4173b1',
+        padding: 16,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+    },
+    headerText: {
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    searchContainer: {
+        flex: 1,
+        backgroundColor: '#fff',
+        borderRadius: 80,
+        marginLeft: 16,
+    },
+    searchInput: {
+        color: '#fff',
+        fontSize: 11,
+        padding: 0,
+        paddingLeft: 32, // Adjust the value based on the icon's width
+    },
+    list: {
+        backgroundColor: '#f0f0f0',
+        flex: 1,
+    },
+    listItem: {
+        backgroundColor: '#f0f0f0',
+        borderBottomWidth: 1,
+        borderColor: '#d4d4d4',
+        padding: 8,
+    },
+    name: {
+        fontSize: 13,
+        fontWeight: 'bold',
+        color: '#727272',
+    },
+    email: {
+        fontSize: 11,
+        color: '#b5b5b5',
     },
 });
 
